@@ -10,4 +10,5 @@ export const PlayerFrame = styled.div`
 
 export const DivRight = styled.div`
   text-align: right;
+  cursor : pointer;
 `;

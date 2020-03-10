@@ -10,8 +10,9 @@ export default function Hunt() {
   const [players, setPlayers] = useState([]);
 
   useEffect(() => {
-    console.log(totalProfit);
-  }, [totalProfit]);
+    setPlayers(players);
+    console.log(players);
+  }, [players]);
 
   function updateValues(profitValue) {
     setTotalProfit(profitValue);
@@ -21,14 +22,7 @@ export default function Hunt() {
     setPlayers([...players, { name: playerName, class: playerClass }]);
   }
 
-  function removePlayer(player) {
-    var array = [...players];
-    var index = players.indexOf(player);
-    if (index !== -1) {
-      array.splice(index, 1);
-      setPlayers(array);
-    }
-  }
+  
 
   return (
     <Container>
@@ -41,7 +35,7 @@ export default function Hunt() {
         />
       </DivRight>
       <CreatePlayer newPlayer={newPlayer} />
-      <PlayersList players={players} removePlayer={removePlayer} />
+      <PlayersList players={players} />
     </Container>
   );
 }
