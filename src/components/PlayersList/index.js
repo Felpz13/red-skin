@@ -7,9 +7,9 @@ export default function PlayersList({ players, removePlayer }) {
   const playersShow = players.map((player, index) => {
     return (
       <PlayerFrame key={index}>
-        <DivRight onClick={removePlayer(player)}>X</DivRight>
+        {/*<DivRight onClick={removePlayer(player)}>X</DivRight>*/}
         nome:{player.name} | classe:{player.class}
-        <PlayerWaste playerId={index} />
+        {/*<PlayerWaste playerId={index}/>*/}
       </PlayerFrame>
     );
   });
