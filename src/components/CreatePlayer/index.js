@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Container, Div3Col, Select, Option, Button } from "./styles";
-import { Input } from "../../styles/common";
+import { Container, Div3Col, Select, Option } from "./styles";
+import { Input, Button } from "../../styles/common";
 
 export default function CreatePlayer({ newPlayer }) {
   const [playerName, setPlayerName] = useState("");

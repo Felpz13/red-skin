@@ -3,26 +3,38 @@ import { Container, DivRight } from "./styles";
 import { Input } from "../../styles/common";
 import CreatePlayer from "../CreatePlayer";
 import PlayersList from "../PlayersList";
+import { generateId, calculateProfitPerPlayer } from "../../utils/playerHandle";
 
 export default function Hunt() {
-  const [totalProfit, setTotalProfit] = useState(null);
-  const [totalWaste, setTotalWaste] = useState(0);
+  const [totalProfit, setTotalProfit] = useState(0);
   const [players, setPlayers] = useState([]);
-
-  useEffect(() => {
-    setPlayers(players);
-    console.log(players);
-  }, [players]);
 
   function updateValues(profitValue) {
     setTotalProfit(profitValue);
+    calculateProfitPerPlayer(players, totalProfit);
   }
 
   function newPlayer(playerName, playerClass) {
-    setPlayers([...players, { name: playerName, class: playerClass }]);
+    setPlayers([...players, {id: generateId(), name: playerName, class: playerClass }]);
   }
 
-  
+  function setPlayerTotalWaste(id, totalWaste){
+    let updatedPlayers = [...players]
+
+    updatedPlayers.forEach(player=>{
+        if(player.id == id){
+          player.waste = totalWaste
+        }
+    })
+    
+    setPlayers(updatedPlayers)
+  }
+
+  function removePlayer(player) {   
+   setPlayers ( players.filter(p => {
+      return p.name !== player.name
+    }))
+  }
 
   return (
     <Container>
@@ -34,8 +46,8 @@ export default function Hunt() {
           onChange={event => updateValues(event.target.value)}
         />
       </DivRight>
-      <CreatePlayer newPlayer={newPlayer} />
-      <PlayersList players={players} />
+      <CreatePlayer newPlayer={newPlayer} removePlayer={removePlayer}/>
+      <PlayersList players={players} removePlayer={removePlayer} setPlayerTotalWaste={setPlayerTotalWaste}/>
     </Container>
   );
 }
