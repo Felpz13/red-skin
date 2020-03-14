@@ -30,7 +30,7 @@ export default function CreatePlayer({ newPlayer }) {
             Selecione
           </Option>
           <Option value="Cavaleiro">Cavaleiro</Option>
-          <Option value="Barbáro">Barbáro</Option>
+          <Option value="Bárbaro">Bárbaro</Option>
           <Option value="Arqueiro">Arqueiro</Option>
           <Option value="Mago">Mago</Option>
           <Option value="Druida">Druida</Option>

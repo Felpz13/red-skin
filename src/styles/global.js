@@ -9,6 +9,7 @@ const GlobalStyle = createGlobalStyle`
   }
   html, body, #root {
     min-height: 100%;
+    background-color: #000000;
   }  
   body, input, button {
     font-family: Arial, Helvetica, sans-serif;

@@ -11,34 +11,39 @@ export default function Hunt() {
 
   function updateValues(profitValue) {
     setTotalProfit(profitValue);
-    calculateProfitPerPlayer(players, totalProfit);
+    setPlayers(calculateProfitPerPlayer(players, profitValue));
   }
 
   function newPlayer(playerName, playerClass) {
-    setPlayers([...players, {id: generateId(), name: playerName, class: playerClass }]);
+    setPlayers([
+      ...players,
+      { id: generateId(), name: playerName, class: playerClass }
+    ]);
   }
 
-  function setPlayerTotalWaste(id, totalWaste){
-    let updatedPlayers = [...players]
+  function setPlayerTotalWaste(id, totalWaste) {
+    let updatedPlayers = [...players];
 
-    updatedPlayers.forEach(player=>{
-        if(player.id == id){
-          player.waste = totalWaste
-        }
-    })
-    
-    setPlayers(updatedPlayers)
+    updatedPlayers.forEach(player => {
+      if (player.id == id) {
+        player.waste = totalWaste;
+      }
+    });
+
+    setPlayers(calculateProfitPerPlayer(updatedPlayers, totalProfit));
   }
 
-  function removePlayer(player) {   
-   setPlayers ( players.filter(p => {
-      return p.name !== player.name
-    }))
+  function removePlayer(player) {
+    const newPlayers = players.filter(p => {
+      return p.id !== player.id;
+    });
+    setPlayers(calculateProfitPerPlayer(newPlayers, totalProfit));
   }
 
   return (
     <Container>
       <DivRight>
+        <span>LUCRO TOTAL: </span>
         <Input
           type="text"
           placeholder="Insira o Lucro da Hunt!"
@@ -46,8 +51,12 @@ export default function Hunt() {
           onChange={event => updateValues(event.target.value)}
         />
       </DivRight>
-      <CreatePlayer newPlayer={newPlayer} removePlayer={removePlayer}/>
-      <PlayersList players={players} removePlayer={removePlayer} setPlayerTotalWaste={setPlayerTotalWaste}/>
+      <CreatePlayer newPlayer={newPlayer} removePlayer={removePlayer} />
+      <PlayersList
+        players={players}
+        removePlayer={removePlayer}
+        setPlayerTotalWaste={setPlayerTotalWaste}
+      />
     </Container>
   );
 }

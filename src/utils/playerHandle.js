@@ -1,24 +1,29 @@
-
-export function generateId(){
-    return Math.floor(Math.random()*100000);
+export function generateId() {
+  return Math.floor(Math.random() * 100000);
 }
 
-export function calculateProfitPerPlayer(players, totalProfit){
-    if(players.lenght > 0){
-        let updatedPlayers = [...players]
-        const totalWaste = calculateTotalWaste(players)
-    
-        const playersLenght = players.lenght
-        updatedPlayers.forEach(player=>{
-            player.profit = player.waste + ((totalProfit - totalWaste) / playersLenght)
-        })
-        
-        return updatedPlayers
-    } else{
-        return []
-    } 
+export function calculateProfitPerPlayer(players, totalProfit) {
+  if (players.length > 0) {
+    let updatedPlayers = [...players];
+    const totalWaste = calculateTotalWaste(players);
+    const playersLenght = players.length;
+    updatedPlayers.forEach(player => {
+      player.profit =
+        totalProfit > totalWaste
+          ? player.waste + (totalProfit - totalWaste) / playersLenght
+          : 0;
+    });
+
+    return updatedPlayers;
+  } else {
+    return [];
+  }
 }
 
-function calculateTotalWaste(players){
-    return players.reduce((acc, player) => acc + player.waste)
+function calculateTotalWaste(players) {
+  let total = 0;
+  players.forEach(player => {
+    total += player.waste;
+  });
+  return total;
 }
