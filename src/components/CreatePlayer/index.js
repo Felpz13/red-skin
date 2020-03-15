@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Container, Div3Col, Select, Option } from "./styles";
-import { Input, Button } from "../../styles/common";
+import { Container, Div3Col } from "./styles";
+import { DefaultDiv, Input, Button, Select, Option } from "../../styles/common";
 
 export default function CreatePlayer({ newPlayer }) {
   const [playerName, setPlayerName] = useState("");
@@ -16,7 +16,8 @@ export default function CreatePlayer({ newPlayer }) {
 
   return (
     <Container>
-      <Div3Col>
+      <p>Novo Player</p>
+      <DefaultDiv>
         <Input
           value={playerName}
           placeholder="Insira o nome"
@@ -33,10 +34,10 @@ export default function CreatePlayer({ newPlayer }) {
           <Option value="Bárbaro">Bárbaro</Option>
           <Option value="Arqueiro">Arqueiro</Option>
           <Option value="Mago">Mago</Option>
-          <Option value="Druida">Druida</Option>
+          <Option value="Druida">Shaman</Option>
         </Select>
         <Button onClick={addPlayer}>Adicionar Jogador</Button>
-      </Div3Col>
+      </DefaultDiv>
     </Container>
   );
 }

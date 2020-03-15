@@ -1,20 +1,43 @@
 import styled from "styled-components";
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 0.5fr);
+`;
 
 export const PlayerFrame = styled.div`
-  border: 1px solid black;
   min-height: 50px;
-  margin: 25px 0;
-  padding: 0 25px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: #300e00;
+`;
+
+export const DivColumn = styled.div`
+  padding: 5px;
+  margin 20px 0;
 `;
 
 export const DivRight = styled.div`
-  cursor: pointer;
   text-align: right;
 `;
 
 export const PlayerHeader = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+`;
+
+export const PlayerName = styled.div`
+  display: flex;
+  justify-content: start;
+`;
+
+export const FlexItensCenter = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const Img = styled.img`
+  cursor: pointer;
 `;
