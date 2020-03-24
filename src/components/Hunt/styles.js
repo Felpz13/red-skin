@@ -22,7 +22,7 @@ export const Title = styled.div`
   text-align: center;
   color: #e2e2e2;
   font-size: 2rem;
-  margin: 20px 0 60px 0;
+  margin: 0 0 60px 0;
 `;
 
 export const DivControls = styled.div`

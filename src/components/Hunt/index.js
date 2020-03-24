@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import DezorinhaImg from "../../images/dezorinhaslogo.png";
 import { Container, DivRight, DivControls, Title } from "./styles";
 import { Input } from "../../styles/common";
 import CurrencyFormat from "react-currency-format";
@@ -81,6 +82,7 @@ export default function Hunt() {
 
   return (
     <Container>
+      <img src={DezorinhaImg} alt="dezorinha logo" height="100"></img>
       <Title>HUNT PROFIT</Title>
       <DivRight>
         <span>TOTAL VENDIDO: </span>
