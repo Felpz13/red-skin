@@ -11,6 +11,7 @@ const GlobalStyle = createGlobalStyle`
     min-height: 100%;
     background-color: #000000;
     background-image: url("../images/bloodstone_backgound.jpg");
+    font-family: 'Source Sans Pro', sans-serif;
   }  
   body, input, button {
     font-family: Arial, Helvetica, sans-serif;

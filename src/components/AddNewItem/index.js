@@ -7,7 +7,7 @@ import {
   Input,
   FlexCenter
 } from "../../styles/common";
-import { SelectItemType, Container } from "./styles";
+import { Container } from "./styles";
 import { generateId } from "../../utils/playerHandle";
 import { getItensList } from "../../utils/itensList";
 
@@ -36,7 +36,10 @@ export default function AddNewItem({
       <p>Nova Waste</p>
       <DefaultDiv>
         <div>
-          <Select onChange={event => setSelectedPlayerId(event.target.value)}>
+          <Select
+            onChange={event => setSelectedPlayerId(event.target.value)}
+            fullDiv
+          >
             {players.map(player => (
               <Option key={player.id} value={player.id}>
                 {player.name}
@@ -45,15 +48,16 @@ export default function AddNewItem({
           </Select>
         </div>
         <div>
-          <SelectItemType
+          <Select
             onChange={event => setSelectedItemId(event.target.value)}
+            fullDiv
           >
             {itens.map(item => (
               <Option key={item.id} value={item.id} img={item.ico}>
                 {item.name}
               </Option>
             ))}
-          </SelectItemType>
+          </Select>
         </div>
         <div>
           <Input

@@ -1,12 +1,25 @@
 import styled from "styled-components";
 
 export const Input = styled.input`
-  border: 1px solid black;
-  border-radius: 6px;
-  -webkit-box-shadow: 39px 36px 6px -21px rgba(0, 0, 0, 0.49);
-  -moz-box-shadow: 39px 36px 6px -21px rgba(0, 0, 0, 0.49);
-  box-shadow: 39px 36px 6px -21px rgba(0, 0, 0, 0.49);
-  padding: 0 4px;
+  display: inline-block;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  padding: 10px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.31);
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  font: normal 12px / normal Arial, Helvetica, sans-serif;
+  color: rgba(255, 255, 255, 1);
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  background: rgba(91, 91, 91, 1);
+  -webkit-box-shadow: 2px 2px 2px 0 rgba(255, 255, 255, 0.42);
+  box-shadow: 2px 2px 2px 0 rgba(255, 255, 255, 0.42);
+  -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+  -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+  -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+  transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
   max-width: ${props => (props.small ? "42px" : "unset")};
 `;
 
@@ -37,6 +50,14 @@ export const DefaultDiv = styled.div`
   background-color: #2e0e01;
 `;
 
-export const Select = styled.select``;
+export const Select = styled.select`
+  border: 1px solid rgba(255, 255, 255, 0.31);
+  -webkit-border-radius: 10px;
+  background: rgba(91, 91, 91, 1);
+  color: rgba(255, 255, 255, 1);
+  -webkit-box-shadow: 2px 2px 2px 0 rgba(255, 255, 255, 0.42);
+  box-shadow: 2px 2px 2px 0 rgba(255, 255, 255, 0.42);
+  height: ${props => (props.fullDiv ? "100%" : "auto")};
+`;
 
 export const Option = styled.option``;
