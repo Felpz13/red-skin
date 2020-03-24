@@ -9,8 +9,7 @@ const GlobalStyle = createGlobalStyle`
   }
   html, body, #root {    
     min-height: 100%;
-    background-color: #000000;
-    background-image: url("../images/bloodstone_backgound.jpg");
+    background-color: #000000;    
   }  
   body, input, button {
     font-family: 'Righteous', cursive;

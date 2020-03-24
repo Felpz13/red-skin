@@ -1,10 +1,12 @@
 import styled from "styled-components";
+import imgBackground from "../../images/bloodstone_background.jpg";
 
 export const Container = styled.div`
   margin: 0 12%;
   height: 100vh;
   color: #ffffff;
   padding 60px 25px;
+  background-image: url(${imgBackground});
 
   @media  screen and (max-width: 1366px) {
     margin: 0;
