@@ -30,3 +30,9 @@ export const DivControls = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 `;
+
+export const HeaderImages = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;

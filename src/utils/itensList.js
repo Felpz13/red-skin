@@ -59,6 +59,12 @@ export function getItensList() {
       name: "Poção de Vida Super",
       ico: "pot_vida_super.png",
       value: 480
+    },
+    {
+      id: 10,
+      name: "Outros",
+      ico: "outros.png",
+      value: 1
     }
   ];
 }

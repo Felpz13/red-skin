@@ -28,7 +28,13 @@ export default function PlayerWaste({ player, removeItemFromPlayer }) {
               />
             </FlexCenter>
             <div>
-              {item.quantity}un. {item.name}
+              {item.name === "Outros" ? (
+                <span>{item.name}</span>
+              ) : (
+                <span>
+                  {item.quantity}un. {item.name}
+                </span>
+              )}
             </div>
           </Item>
         ))}
