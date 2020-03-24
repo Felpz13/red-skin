@@ -6,7 +6,8 @@ export const Container = styled.div`
   height: 100vh;
   color: #ffffff;
   padding 60px 25px;
-  background-image: url(${imgBackground});
+  background-image: linear-gradient(to bottom, rgba(255,255,255,0) 20%,
+  rgb(0, 0, 0)), url(${imgBackground});
 
   @media  screen and (max-width: 1366px) {
     margin: 0;
