@@ -7,14 +7,13 @@ const GlobalStyle = createGlobalStyle`
     outline: 0;
     box-sizing: border-box;
   }
-  html, body, #root {
+  html, body, #root {    
     min-height: 100%;
     background-color: #000000;
     background-image: url("../images/bloodstone_backgound.jpg");
-    font-family: 'Source Sans Pro', sans-serif;
   }  
   body, input, button {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Righteous', cursive;
     font-size: 14px;
   }   
   `;

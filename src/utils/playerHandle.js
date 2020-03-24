@@ -1,3 +1,5 @@
+import { removeCurrency, toCurrency } from "./currencyHandler";
+
 export function generateId() {
   return Math.floor(Math.random() * 100000);
 }
@@ -5,13 +7,11 @@ export function generateId() {
 export function calculateProfitPerPlayer(players, totalProfit) {
   if (players.length > 0) {
     let updatedPlayers = [...players];
-    const totalWaste = calculateTotalWaste(players);
-    const playersLenght = players.length;
+
     updatedPlayers.forEach(player => {
-      player.profit =
-        totalProfit > totalWaste
-          ? player.waste + (totalProfit - totalWaste) / playersLenght
-          : 0;
+      player.profit = toCurrency(
+        calculatePlayerTotalProfit(player, players, totalProfit)
+      );
     });
 
     return updatedPlayers;
@@ -20,10 +20,18 @@ export function calculateProfitPerPlayer(players, totalProfit) {
   }
 }
 
+function calculatePlayerTotalProfit(player, players, totalProfit) {
+  const totalWaste = calculateTotalWaste(players);
+
+  return totalProfit > totalWaste
+    ? removeCurrency(player.waste) + (totalProfit - totalWaste) / players.length
+    : 0;
+}
+
 function calculateTotalWaste(players) {
   let total = 0;
   players.forEach(player => {
-    total += player.waste;
+    total += removeCurrency(player.waste);
   });
   return total;
 }

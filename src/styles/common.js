@@ -6,7 +6,7 @@ export const Input = styled.input`
   -moz-box-sizing: content-box;
   box-sizing: content-box;
   padding: 10px 20px;
-  border: 1px solid rgba(255, 255, 255, 0.31);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   -webkit-border-radius: 10px;
   border-radius: 10px;
   font: normal 12px / normal Arial, Helvetica, sans-serif;
@@ -14,8 +14,8 @@ export const Input = styled.input`
   -o-text-overflow: clip;
   text-overflow: clip;
   background: rgba(91, 91, 91, 1);
-  -webkit-box-shadow: 2px 2px 2px 0 rgba(255, 255, 255, 0.42);
-  box-shadow: 2px 2px 2px 0 rgba(255, 255, 255, 0.42);
+  -webkit-box-shadow: 2px 2px 2px 0 rgba(255, 255, 255, 0.2);
+  box-shadow: 2px 2px 2px 0 rgba(255, 255, 255, 0.2);
   -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
   -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
   -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);

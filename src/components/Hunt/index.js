@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { Container, DivRight, DivControls, Title } from "./styles";
 import { Input } from "../../styles/common";
+import CurrencyFormat from "react-currency-format";
 import CreatePlayer from "../CreatePlayer";
 import PlayersList from "../PlayersList";
 import { generateId, calculateProfitPerPlayer } from "../../utils/playerHandle";
+import { toCurrency } from "../../utils/currencyHandler";
 import AddNewItem from "../AddNewItem";
 
 export default function Hunt() {
@@ -11,8 +13,11 @@ export default function Hunt() {
   const [players, setPlayers] = useState([]);
 
   function updateValues(profitValue) {
-    setTotalProfit(profitValue);
-    setPlayers(calculateProfitPerPlayer(players, profitValue));
+    if (profitValue != null && !isNaN(profitValue)) {
+      setTotalProfit(profitValue);
+      setPlayers(calculateProfitPerPlayer(players, profitValue));
+      console.log(players);
+    }
   }
 
   function newPlayer(playerName, playerClass) {
@@ -34,19 +39,21 @@ export default function Hunt() {
     itens.forEach(item => {
       total += item.total;
     });
-    return total;
+    return toCurrency(total);
   }
 
   function addItemToPlayer(item, playerId) {
-    let playersNexState = [...players];
+    if (item.quantity != null && !isNaN(item.quantity)) {
+      let playersNextState = [...players];
 
-    playersNexState.forEach(p => {
-      if (p.id == playerId) {
-        p.itens = [...p.itens, item];
-        p.waste = setPlayerWaste(p.itens);
-      }
-    });
-    setPlayers(calculateProfitPerPlayer(playersNexState, totalProfit));
+      playersNextState.forEach(p => {
+        if (p.id == playerId) {
+          p.itens = [...p.itens, item];
+          p.waste = setPlayerWaste(p.itens);
+        }
+      });
+      setPlayers(calculateProfitPerPlayer(playersNextState, totalProfit));
+    }
   }
 
   function removeItemFromPlayer(item, player) {
@@ -54,15 +61,15 @@ export default function Hunt() {
       return i.id !== item.id;
     });
 
-    let playersNexState = [...players];
-    playersNexState.forEach(p => {
+    let playersNextState = [...players];
+    playersNextState.forEach(p => {
       if (p.id == player.id) {
         p.itens = newItens;
         p.waste = setPlayerWaste(p.itens);
       }
     });
 
-    setPlayers(calculateProfitPerPlayer(playersNexState, totalProfit));
+    setPlayers(calculateProfitPerPlayer(playersNextState, totalProfit));
   }
 
   function removePlayer(player) {
@@ -77,11 +84,16 @@ export default function Hunt() {
       <Title>HUNT PROFIT</Title>
       <DivRight>
         <span>TOTAL VENDIDO: </span>
-        <Input
+        <CurrencyFormat
           type="text"
           placeholder="Insira o Bruto da Hunt!"
           value={totalProfit}
-          onChange={event => updateValues(event.target.value)}
+          onValueChange={values => {
+            updateValues(values.floatValue);
+          }}
+          customInput={Input}
+          thousandSeparator={"."}
+          decimalSeparator={","}
         />
       </DivRight>
       <DivControls>
