@@ -5,7 +5,7 @@ import {
   Option,
   Button,
   Input,
-  FlexCenter
+  FlexCenter,
 } from "../../styles/common";
 import { Container } from "./styles";
 import { generateId } from "../../utils/playerHandle";
@@ -15,7 +15,7 @@ import CurrencyFormat from "react-currency-format";
 export default function AddNewItem({
   setPlayerTotalWaste,
   addItemToPlayer,
-  players
+  players,
 }) {
   const [itens] = useState(getItensList);
   const [selectedItemId, setSelectedItemId] = useState(itens[0].id);
@@ -28,7 +28,7 @@ export default function AddNewItem({
       id: generateId(),
       name: itens[itemId].name,
       quantity: parseInt(selectedQuantity),
-      total: selectedQuantity * itens[itemId].value
+      total: selectedQuantity * itens[itemId].value,
     };
   }
 
@@ -38,10 +38,10 @@ export default function AddNewItem({
       <DefaultDiv>
         <div>
           <Select
-            onChange={event => setSelectedPlayerId(event.target.value)}
+            onChange={(event) => setSelectedPlayerId(event.target.value)}
             fullDiv
           >
-            {players.map(player => (
+            {players.map((player) => (
               <Option key={player.id} value={player.id}>
                 {player.name}
               </Option>
@@ -50,10 +50,10 @@ export default function AddNewItem({
         </div>
         <div>
           <Select
-            onChange={event => setSelectedItemId(event.target.value)}
+            onChange={(event) => setSelectedItemId(event.target.value)}
             fullDiv
           >
-            {itens.map(item => (
+            {itens.map((item) => (
               <Option key={item.id} value={item.id} img={item.ico}>
                 {item.name}
               </Option>
@@ -61,15 +61,10 @@ export default function AddNewItem({
           </Select>
         </div>
         <div>
-          <CurrencyFormat
+          <Input
             placeholder="Qntd"
             value={selectedQuantity}
-            onChange={values => {
-              setSelectedQuantity(values.value);
-            }}
-            customInput={Input}
-            thousandSeparator={"."}
-            decimalSeparator={","}
+            onChange={(event) => setSelectedQuantity(event.target.value)}
           />
         </div>
         <FlexCenter>
