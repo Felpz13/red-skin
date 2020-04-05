@@ -10,6 +10,7 @@ import {
 import { Container } from "./styles";
 import { generateId } from "../../utils/playerHandle";
 import { getItensList } from "../../utils/itensList";
+import CurrencyFormat from "react-currency-format";
 
 export default function AddNewItem({
   setPlayerTotalWaste,
@@ -60,12 +61,16 @@ export default function AddNewItem({
           </Select>
         </div>
         <div>
-          <Input
-            small
-            value={selectedQuantity}
-            onChange={event => setSelectedQuantity(event.target.value)}
+          <CurrencyFormat
             placeholder="Qntd"
-          ></Input>
+            value={selectedQuantity}
+            onChange={values => {
+              setSelectedQuantity(values.value);
+            }}
+            customInput={Input}
+            thousandSeparator={"."}
+            decimalSeparator={","}
+          />
         </div>
         <FlexCenter>
           <Button

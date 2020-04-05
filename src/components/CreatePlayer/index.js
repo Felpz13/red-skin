@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, Div3Col } from "./styles";
+import { Container } from "./styles";
 import { DefaultDiv, Input, Button, Select, Option } from "../../styles/common";
 
 export default function CreatePlayer({ newPlayer }) {
@@ -21,10 +21,10 @@ export default function CreatePlayer({ newPlayer }) {
         <Input
           value={playerName}
           placeholder="Insira o nome"
-          onChange={event => setPlayerName(event.target.value)}
+          onChange={(event) => setPlayerName(event.target.value)}
         />
         <Select
-          onChange={event => setPlayerClass(event.target.value)}
+          onChange={(event) => setPlayerClass(event.target.value)}
           value={playerClass}
         >
           <Option value="" disabled>
@@ -34,7 +34,7 @@ export default function CreatePlayer({ newPlayer }) {
           <Option value="Bárbaro">Bárbaro</Option>
           <Option value="Arqueiro">Arqueiro</Option>
           <Option value="Mago">Mago</Option>
-          <Option value="Druida">Shaman</Option>
+          <Option value="Druida">Xamã</Option>
         </Select>
         <Button onClick={addPlayer}>Adicionar Jogador</Button>
       </DefaultDiv>
